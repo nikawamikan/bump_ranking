@@ -29,11 +29,11 @@ category_point = [1.5, 1.0]
 table = [1.0, 1.2, 1.5, 2.0, 2.7, 3.8]
 
 # ランク
-apex_rank: list[str] = ['Predator', 'Master', 'Diamond', 'Platinum',
-                        'Gold', 'Silver', 'Bronze']
+apex_rank = ['Predator', 'Master',
+             'Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze']
 
 # guild毎に情報を登録する
-bumper_guilds: dict[int, bump_guild.Bump_guild] = {}
+bumper_guilds = {}
 
 # ユーザーIDを取得する正規表現
 namept = re.compile('<.*>')
@@ -94,7 +94,7 @@ async def send_rank(ctx):
     rankコマンドで利用する関数です。
     利用チャンネルに対して今月の現在のポイントをメッセージとして送信します。
     """
-    async def get_point(count, brocker, id) -> float:
+    async def get_point(count, brocker, id):
         """
         ポイントの計算に利用します。
         category_pointのポイントはbumpとdissokuで分けられています。
@@ -253,10 +253,10 @@ itudoko = [
 FILE_NAME = 'itudoko.json'
 
 with open(FILE_NAME, mode='rt', encoding='utf-8') as file:
-    stack: list[list[str]] = json.load(file)
+    stack = json.load(file)
 
 
-def wright_json(stack: list[list[str]]):
+def wright_json(stack):
     with open(FILE_NAME, mode='wt', encoding='utf-8') as file:
         json.dump(stack, file, ensure_ascii=False)
 
@@ -276,10 +276,10 @@ async def itudokoget(ctx):
 
 tr = Translator()
 
-lang_codes: list[str] = ['en', 'it', 'ne', 'ko', 'de']
+lang_codes = ['en', 'it', 'ne', 'ko', 'de']
 
 
-def random_transe(word: str, lang: str, loop: int, lang_codes: list[str]) -> str:
+def random_transe(word: str, lang: str, loop: int, lang_codes) -> str:
     if loop == 0:
         return tr.translate(word, src=lang, dest='ja').text
     else:
